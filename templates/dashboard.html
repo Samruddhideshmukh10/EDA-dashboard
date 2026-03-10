@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>EDA Dashboard</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+text-align:center;
+}
+
+.card{
+display:inline-block;
+background:white;
+padding:20px;
+margin:10px;
+border-radius:10px;
+box-shadow:0px 3px 8px rgba(0,0,0,0.2);
+width:200px;
+}
+
+.graph-box{
+background:white;
+margin:30px;
+padding:20px;
+border-radius:12px;
+box-shadow:0px 3px 8px rgba(0,0,0,0.2);
+}
+
+.info{
+color:#555;
+font-size:14px;
+max-width:700px;
+margin:auto;
+}
+
+img{
+margin-top:15px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>📊 McDonald's Nutrition Dashboard</h1>
+
+<div class="card">
+<h3>Mean Calories</h3>
+<p>{{ mean_calories }}</p>
+</div>
+
+<div class="card">
+<h3>Median Calories</h3>
+<p>{{ median_calories }}</p>
+</div>
+
+<div class="card">
+<h3>Std Deviation</h3>
+<p>{{ std_calories }}</p>
+</div>
+
+<div class="graph-box">
+<h2>Calories by Category</h2>
+
+<p class="info">
+This chart shows the average calorie content across different food categories in the McDonald's menu.
+It helps identify which category contributes the most calories.
+</p>
+
+<img src="{{ url_for('static', filename='plots/category_calories.png') }}" width="650">
+</div>
+
+
+<div class="graph-box">
+<h2>Fat vs Calories</h2>
+
+<p class="info">
+This scatter plot visualizes the relationship between total fat and calories.
+Foods with higher fat generally have higher calorie content.
+</p>
+
+<img src="{{ url_for('static', filename='plots/fat_calories.png') }}" width="650">
+</div>
+
+
+<div class="graph-box">
+<h2>Sugar vs Calories</h2>
+
+<p class="info">
+This bubble chart compares sugar content with calories.
+The bubble size represents protein levels, helping identify balanced food items.
+</p>
+
+<img src="{{ url_for('static', filename='plots/sugar_calories.png') }}" width="650">
+</div>
+
+
+<div class="graph-box">
+<h2>Nutrition Correlation Heatmap</h2>
+
+<p class="info">
+The heatmap shows correlations between nutritional attributes like fat, sugar, protein and calories.
+Darker colors indicate stronger relationships between variables.
+</p>
+
+<img src="{{ url_for('static', filename='plots/heatmap.png') }}" width="650">
+</div>
+
+</body>
+</html>
